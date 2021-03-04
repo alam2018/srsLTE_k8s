@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#install docker-compose
+sudo apt-get install docker-compose
 
 #echo " "
 #echo "Cloning srsLTE"
