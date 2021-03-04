@@ -1,0 +1,12 @@
+sudo docker ps -a
+
+sudo docker exec -it docker_id bash
+
+sudo docker images
+
+sudo docker attach docker_id
+
+sudo docker run --privileged -it image_name/id bash
+
+Tun network 172.16.0.0/24, docker interface ip 172.17.0.2
+sudo ip route add 172.16.0.0/24 via 172.17.0.2

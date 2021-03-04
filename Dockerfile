@@ -6,7 +6,7 @@ MAINTAINER Giovanni Baggio <g.baggio@fbk.eu>
 ENV DEBIAN_FRONTEND noninteractive
 
 # Dependencies for the UHD driver for the USRP hardware
-RUN apt-get update && apt-get -yq install cmake git libfftw3-dev libmbedtls-dev libboost-program-options-dev libconfig++-dev libsctp-dev libuhd-dev iproute2 libzmq3-dev libtool autoconf
+RUN apt-get update && apt-get -yq install cmake git libfftw3-dev libmbedtls-dev libboost-program-options-dev libconfig++-dev libsctp-dev libuhd-dev iproute2 libzmq3-dev libtool autoconf iptables net-tools
 #RUN apt-get update && apt-get -yq install git
 
 # Fetching empower-enb-proto

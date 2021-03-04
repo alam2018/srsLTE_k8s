@@ -1,0 +1,9 @@
+kubectl get pods -o wide
+
+kubectl get pods --watch
+
+kubectl apply -f example.yaml
+
+kubectl get deployment
+
+kubectl delete -f example.yaml
