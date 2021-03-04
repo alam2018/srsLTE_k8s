@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: epc-deployment
   labels:
-    app: srs-epc
+    app: epc
 spec:
   replicas: 1
   selector:
@@ -15,8 +15,12 @@ spec:
         app: epc
     spec:
       containers:
-      - name: epc
-        image: srslte_k8s_srsepc
-        imagePullPolicy: Never
+      - name: cepc
+        image: epc_k8s:v1
+        imagePullPolicy: IfNotPresent
+        command: ["/bin/sh", "-c"]
+        args: ["/launcher2.sh"]
 #        ports:
 #        - containerPort: 80
+#      dnsPolicy: ClusterFirst
+#      enableServiceLinks: true

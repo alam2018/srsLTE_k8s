@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: epc-deployment
+  labels:
+    app: epc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: epc
+  template:
+    metadata:
+      labels:
+        app: epc
+    spec:
+      containers:
+        - name: cepc
+#Use this image when you want to download from github repository
+#          image: cloudorc/srslte-epc:latest
+#For this, docker image needs to built locally at worker node
+          image: srslte_k8s_srsepc:latest
+          imagePullPolicy: Never
+          securityContext:
+            capabilities:
+              add:
+                - NET_ADMIN
+            privileged: true
