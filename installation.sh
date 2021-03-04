@@ -3,14 +3,8 @@
 #install docker-compose
 sudo apt-get install docker-compose
 
-#echo " "
-#echo "Cloning srsLTE"
-#echo "=============="
-#echo " "
-#git clone https://github.com/srsLTE/srsLTE.git
-
 echo " "
-echo "Firing up the containers"
+echo "Container cooking started"
 echo "========================"
 echo " "
 sudo docker-compose up -d

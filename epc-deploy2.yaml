@@ -19,7 +19,7 @@ spec:
 #Use this image when you want to download from github repository
 #          image: cloudorc/srslte-epc:latest
 #For this, docker image needs to built locally at worker node
-          image: srslte_k8s_srsepc:latest
+          image: srsltek8s_srsepc:latest
           imagePullPolicy: Never
           securityContext:
             capabilities:
