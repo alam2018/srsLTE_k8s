@@ -1,6 +1,7 @@
 # srsLTE_k8s
 This repository creats and starts srsLTE EPC on a docker container. All the EPC GW are running on the same container.
 
+#Build docker image to local repository
 Docker build: ./installation.sh
 
 Docker command:
