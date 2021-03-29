@@ -1,7 +1,7 @@
 #FROM ubuntu:19.10
 FROM ubuntu:18.04
 
-MAINTAINER Giovanni Baggio <g.baggio@fbk.eu>
+MAINTAINER Md Ashraful Alam <anjonbd2007@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 
