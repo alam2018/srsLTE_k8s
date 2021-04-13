@@ -14,13 +14,13 @@ RUN apt-get update && apt-get -yq install cmake git libfftw3-dev libmbedtls-dev 
 #RUN cd empower-enb-agent && cmake -DCMAKE_BUILD_TYPE=Release . && make && make install
 
 #First, one needs to install libzmq
-#RUN git clone https://github.com/zeromq/libzmq.git
-#RUN cd /libzmq 
-#RUN chmod +x autogen.sh
-#RUN autogen.sh
-#RUN chmod +x .configure
-#RUN make && make install 
-#RUN ldconfig
+RUN git clone https://github.com/zeromq/libzmq.git
+RUN cd /libzmq 
+RUN chmod +x autogen.sh
+RUN autogen.sh
+RUN chmod +x .configure
+RUN make && make install 
+RUN ldconfig
 
 #Second, install czmq
 #RUN git clone https://github.com/zeromq/czmq.git
