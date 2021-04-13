@@ -15,9 +15,9 @@ RUN apt-get update && apt-get -yq install cmake git libfftw3-dev libmbedtls-dev 
 
 #First, one needs to install libzmq
 RUN git clone https://github.com/zeromq/libzmq.git
-RUN cd /libzmq 
-RUN chmod +x /autogen.sh
-RUN /autogen.sh
+WORKDIR cd /libzmq 
+RUN chmod +x autogen.sh
+RUN autogen.sh
 #RUN chmod +x .configure
 RUN /configure
 RUN make && make install 
