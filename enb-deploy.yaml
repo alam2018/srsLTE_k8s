@@ -1,0 +1,41 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: srslte
+  name: srslte-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: srslte
+  template:
+    metadata:
+      labels:
+        app: srslte
+    spec:
+#      publicIP: 10.244.1.50
+      hostname: enb
+#      hostNetwork: true
+      containers:
+      - image: srslte-enb
+#      - image: cloudorc/vcore-mme:latest
+        name: srslte-enb-container
+        imagePullPolicy: IfNotPresent
+#        ports:
+#        - containerPort: 2000-50000
+#          protocol:
+#          - TCP
+#          - UDP
+#          - SCTP
+        command: ['/bin/sh', 'launcher.sh 10.244.10.64']
+#        command: ['/bin/sh', '/docker-entrypoint/deploy-test.sh']
+#        ports:
+
+        securityContext:
+          capabilities:
+            add:
+              - NET_ADMIN
+          privileged: true

@@ -16,7 +16,7 @@ then
   exit
 fi
 
-EPC_IP = "$1"
+EPC_IP = $1
 
 echo "EPC IP: $EPC_IP"
 

@@ -43,6 +43,6 @@ ADD conf/user_db.csv /etc/srslte/
 #ENV n_prb=25
 
 ADD launcher2.sh /
-
+ADD launcher.sh /
 # Run the launcher script
-ENTRYPOINT ["bash","/launcher2.sh"]
+#ENTRYPOINT ["bash","/launcher2.sh"]
