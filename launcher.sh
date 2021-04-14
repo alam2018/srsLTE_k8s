@@ -24,7 +24,7 @@ echo "EPC IP: $EPC_IP"
 #./dns_replace.sh 
 iptables -t nat -A POSTROUTING -o tun+ -j MASQUERADE
 
-sed -i 's/EPC_IP/'$1'/g' ~/.config/srslte/enb.conf
+sed -i 's/EPC_IP/'$1'/g' /etc/srslte/enb.conf
 
 cat /etc/srslte/enb.conf
 #./srsLTE/build/srsepc/src/srsepc &
