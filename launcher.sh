@@ -23,6 +23,9 @@ echo "EPC IP: $EPC_IP"
 #Next script needed for enb setup
 #./dns_replace.sh 
 iptables -t nat -A POSTROUTING -o tun+ -j MASQUERADE
+
+sed -i 's/EPC_IP/'$1'/g' ~/.config/srslte/enb.conf
+
 cat /etc/srslte/enb.conf
 #./srsLTE/build/srsepc/src/srsepc &
 ./srsLTE/build/srsenb/src/srsenb --rf.device_name=zmq --rf.device_args="fail_on_disconnect=true,tx_port=tcp://*:2000,rx_port=tcp://localhost:2001,id=enb,base_srate=23.04e6" &
