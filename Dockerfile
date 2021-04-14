@@ -44,5 +44,6 @@ ADD conf/user_db.csv /etc/srslte/
 
 ADD launcher2.sh /
 ADD launcher.sh /
+RUN chmod +x launcher.sh
 # Run the launcher script
 #ENTRYPOINT ["bash","/launcher2.sh"]
