@@ -30,7 +30,7 @@ spec:
 #          - TCP
 #          - UDP
 #          - SCTP
-        command: ['/bin/sh', 'launcher.sh 10.244.10.64']
+        command: ['/bin/sh', 'launcher.sh', '10.244.10.64']
 #        command: ['/bin/sh', '/docker-entrypoint/deploy-test.sh']
 #        ports:
 
