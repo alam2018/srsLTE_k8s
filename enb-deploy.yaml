@@ -24,6 +24,14 @@ spec:
 #      - image: cloudorc/vcore-mme:latest
         name: srslte-enb-container
         imagePullPolicy: IfNotPresent
+      
+      topologySpreadConstraints:
+      - maxSkew: 1
+        topologyKey: kubernetes.io/hostname
+        whenUnsatisfiable: DoNotSchedule
+        labelSelector:
+          matchLabels:
+            app: srslte
 #        ports:
 #        - containerPort: 2000-50000
 #          protocol:
@@ -35,14 +43,6 @@ spec:
       # This sets how evenly spread the pods
       # For example, if there are 3 nodes available,
       # 2 pods are scheduled for each node.
-      topologySpreadConstraints:
-      - maxSkew: 1
-        topologyKey: kubernetes.io/hostname
-        whenUnsatisfiable: DoNotSchedule
-        labelSelector:
-          matchLabels:
-            app: srslte
-
 
         securityContext:
           capabilities:
