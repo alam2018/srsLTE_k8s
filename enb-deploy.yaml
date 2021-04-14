@@ -29,9 +29,6 @@ spec:
       - maxSkew: 1
         topologyKey: kubernetes.io/hostname
         whenUnsatisfiable: DoNotSchedule
-        labelSelector:
-          matchLabels:
-            app: srslte
 #        ports:
 #        - containerPort: 2000-50000
 #          protocol:
