@@ -16,16 +16,7 @@ spec:
       labels:
         app: srslte
     spec:
-      affinity:
-        podAntiAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-          - labelSelector:
-              matchExpressions:
-              - key: service-type
-                operator: In
-                values:
-                - srslte
-            topologyKey: kubernetes.io/hostname
+#      publicIP: 10.244.1.50
       hostname: enb
 #      hostNetwork: true
       containers:
@@ -41,7 +32,17 @@ spec:
 #          - SCTP
         command: ['/bin/sh', 'launcher.sh', '10.244.1.100']
 #        command: ['/bin/sh', '/docker-entrypoint/deploy-test.sh']
-#        ports:
+      # This sets how evenly spread the pods
+      # For example, if there are 3 nodes available,
+      # 2 pods are scheduled for each node.
+      topologySpreadConstraints:
+      - maxSkew: 1
+        topologyKey: kubernetes.io/hostname
+        whenUnsatisfiable: DoNotSchedule
+        labelSelector:
+          matchLabels:
+            app: srslte
+
 
         securityContext:
           capabilities:
