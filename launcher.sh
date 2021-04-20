@@ -20,11 +20,16 @@ EPC_IP = $1
 
 echo "EPC IP: $EPC_IP"
 
+ip4=$(/sbin/ip -o -4 addr list eth0 | awk '{print $4}' | cut -d/ -f1)
+
+echo "srsLTE local interface ip: $ip4"
+
 #Next script needed for enb setup
 #./dns_replace.sh 
 iptables -t nat -A POSTROUTING -o tun+ -j MASQUERADE
 
 sed -i 's/EPC_IP/'$1'/g' /etc/srslte/enb.conf
+sed -i 's/LOCAL_INTERFACE_IP/'$ip4'/g' /etc/srslte/enb.conf
 
 cat /etc/srslte/enb.conf
 #./srsLTE/build/srsepc/src/srsepc &

@@ -30,7 +30,7 @@ spec:
 #          - TCP
 #          - UDP
 #          - SCTP
-        command: ['/bin/sh', 'launcher.sh', '10.244.1.100']
+        command: ['/bin/sh', 'launcher.sh', '10.244.5.3']
 #        command: ['/bin/sh', '/docker-entrypoint/deploy-test.sh']
       # This sets how evenly spread the pods
       # For example, if there are 3 nodes available,
