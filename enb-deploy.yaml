@@ -25,7 +25,7 @@ spec:
                 operator: In
                 values:
                 - srslte
-            topologyKey: topology.kubernetes.io/hostname
+            topologyKey: kubernetes.io/hostname
 #      publicIP: 10.244.1.50
       hostname: enb
 #      hostNetwork: true
