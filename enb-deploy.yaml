@@ -7,7 +7,7 @@ metadata:
     app: srslte
   name: srslte-deployment
 spec:
-  replicas: 4
+  replicas: 8
   selector:
     matchLabels:
       app: srslte
