@@ -16,16 +16,16 @@ spec:
       labels:
         app: srslte
     spec:
-      affinity:
-        podAntiAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-          - labelSelector:
-              matchExpressions:
-              - key: app
-                operator: In
-                values:
-                - srslte
-            topologyKey: kubernetes.io/hostname
+#      affinity:
+#        podAntiAffinity:
+#          requiredDuringSchedulingIgnoredDuringExecution:
+#          - labelSelector:
+#              matchExpressions:
+#              - key: app
+#                operator: In
+#                values:
+#                - srslte
+#            topologyKey: kubernetes.io/hostname
 #      publicIP: 10.244.1.50
       hostname: enb
 #      hostNetwork: true
@@ -34,12 +34,7 @@ spec:
 #      - image: cloudorc/vcore-mme:latest
         name: srslte-enb-container
         imagePullPolicy: IfNotPresent
-#        ports:
-#        - containerPort: 2000-50000
-#          protocol:
-#          - TCP
-#          - UDP
-#          - SCTP
+
         command: ['/bin/sh', 'launcher.sh', '10.244.5.3']
 #        command: ['/bin/sh', '/docker-entrypoint/deploy-test.sh']
       # This sets how evenly spread the pods
@@ -51,8 +46,16 @@ spec:
             add:
               - NET_ADMIN
           privileged: true
-
-      topologySpreadConstraints:
-      - maxSkew: 1
-        topologyKey: kubernetes.io/hostname
-        whenUnsatisfiable: DoNotSchedule
+      affinity:
+              podAntiAffinity:
+                preferredDuringSchedulingIgnoredDuringExecution:
+                  - weight: 100
+                    podAffinityTerm:
+                      labelSelector:
+                        matchExpressions:
+                          - key: app
+                            operator: In
+                            values:
+                            - srslte-enb-container
+                      topologyKey: kubernetes.io/hostname
+          
