@@ -33,6 +33,10 @@ ADD conf/sib.conf.mbsfn /etc/srslte/
 ADD conf/epc.conf /etc/srslte/
 ADD conf/user_db.csv /etc/srslte/
 
+
+#Add file to increase the cpu load
+ADD cpu-load.sh /
+
 # Add Kubernetes launch scripts
 #ADD dns_replace.sh /
 
