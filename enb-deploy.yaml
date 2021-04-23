@@ -16,17 +16,6 @@ spec:
       labels:
         app: srslte
     spec:
-#      affinity:
-#        podAntiAffinity:
-#          requiredDuringSchedulingIgnoredDuringExecution:
-#          - labelSelector:
-#              matchExpressions:
-#              - key: app
-#                operator: In
-#                values:
-#                - srslte
-#            topologyKey: kubernetes.io/hostname
-#      publicIP: 10.244.1.50
       hostname: enb
 #      hostNetwork: true
       containers:
@@ -35,17 +24,18 @@ spec:
         name: srslte-enb-container
         imagePullPolicy: IfNotPresent
 
-        command: ['/bin/sh', 'launcher.sh', '10.244.5.3']
+        command: ['/bin/sh', 'launcher.sh', '10.244.5.35']
 #        command: ['/bin/sh', '/docker-entrypoint/deploy-test.sh']
-      # This sets how evenly spread the pods
-      # For example, if there are 3 nodes available,
-      # 2 pods are scheduled for each node.
 
         securityContext:
           capabilities:
             add:
               - NET_ADMIN
           privileged: true
+
+      # This sets how evenly spread the pods
+      # For example, if there are 3 nodes available,
+      # 2 pods are scheduled for each node.
       affinity:
               podAntiAffinity:
                 preferredDuringSchedulingIgnoredDuringExecution:
